@@ -1,0 +1,5 @@
+- hosts: me
+  vars_files:
+  - my-vars.yml
+  tasks:
+  - apt: name="{{ name }}" state="{{ state }}"

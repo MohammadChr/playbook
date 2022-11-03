@@ -1,5 +1,5 @@
 #1
-edit hosts's value in playbook
+edit hosts's value in insapp.yml
 #2
 run  insapp.sh
 #3 

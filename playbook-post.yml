@@ -1,0 +1,17 @@
+- hosts: test
+  tasks:
+  - name: update
+    apt: update_cache=true
+  - name: install mysql
+    apt:
+      state:
+        present
+      name:
+        - mysql-server
+        - mysql-client
+  - name: Create database
+    mysql_db:
+      name: "barayetest"
+      login_host: localhost
+      login_password: "1234"
+      state: present

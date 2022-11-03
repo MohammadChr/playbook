@@ -1,0 +1,10 @@
+- hosts: test
+  tasks:
+  - name: mikham-update-konam
+    command: apt update
+  - name: yayaa
+    command: apt upgrade
+  - name: ayayay2
+    command: apt dist-upgrade
+#  - name: yaayayayya3
+#    command: do-release-upgrade

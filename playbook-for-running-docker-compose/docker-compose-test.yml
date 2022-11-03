@@ -1,0 +1,35 @@
+version: "2.4"
+
+services:
+  postgres:
+    image: postgres:13-alpine
+    restart: on-failure
+    ports:
+      - 5432:5432
+    volumes:
+      - ./volumee/db/var/lib/postgresql/data:/var/lib/postgresql/data:rw
+    environment:
+      - POSTGRES_USER=mamad
+      - POSTGRES_PASSWORD=123456
+      - POSTGRES_DB=mattermostdb
+  mattermost:
+    links:
+      - postgres
+    image: mattermost/mattermost-team-edition
+    restart: on-failure
+    ports:
+      - 8081:8065
+    restart: on-failure
+
+    volumes:
+      - ./volumee/app/mattermost/config:/mattermost/config:rw
+      - ./volumee/app/mattermost/data:/mattermost/data:rw
+      - ./volumee/app/mattermost/logs:/mattermost/logs:rw
+      - ./volumee/app/mattermost/plugins:/mattermost/plugins:rw
+      - ./volumee/app/mattermost/client/plugins:/mattermost/client/plugin:rw
+      - ./volumee/app/mattermost/bleve-indexes:/mattermost/bleve-indexes:rw
+    environment:
+      - "MM_SQLSETTINGS_DRIVERNAME=postgres"
+      - "MM_SQLSETTINGS_DATASOURCE=postgres://mamad:123456@postgres:5432/mattermostdb?sslmode=disable&connect_timeout=10"
+      - "MM_BLEVESETTINGS_INDEXDIR=/mattermost/bleve-indexes"
+

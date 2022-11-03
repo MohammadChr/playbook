@@ -1,0 +1,85 @@
+- hosts: me
+####Conditional command####
+#  tasks:
+#  - name: yowws
+#    command: ls -l
+#    register: haha
+#  - debug:
+#      msg: "{{ haha.stdout }}"
+#    when: ansible_distribution == "Centos"
+#########################
+#######condition2####
+#  tasks:
+#  - name: range_man
+#    assert:
+#      that: ansible_distribution == "Ubuntu"
+#      success_msg: "barikala"
+#      fail_msg: "ridi"
+##################
+#######Condition########
+#  vars: 
+#    wkl: "itsok"
+#  tasks:
+#  - name: mamadgholi
+#    debug:
+#      msg: "Ioohoooooo"
+#    when: ansible_distribution == "Ubuntu"
+#  - name: mamadgholi-2
+#    debug:
+#      msg: "YOPhahahhaha"
+#    when: wkl == "itsok"
+#############
+#####moghayese#####
+#  vars:
+#    my_color_choice: blue
+#  tasks:
+#  - name: range_man
+#    assert:
+#      that: my_color_choice == 'yellow'
+#      success_msg: "barikala"
+#      fail_msg: "ridi"  
+###moteghaier####
+#  vars:
+#    foo: an
+#  tasks:
+#    - debug: 
+#        msg: "khorooji: {{ foo }}"
+
+####taghire ijad kardan dar iek khate khas###
+#  - name: user line in file and regexp
+#    lineinfile:
+#      dest: /home/chr/1.txt
+#      regexp: "^port: 22$"
+#      line: "port: 2222"
+#############
+####handler and notify####
+#  - name: test notify
+#    service: name=ntp state=started enabled=yes
+#    notify: ntp restart
+#  handlers: 
+#  - name: ntp restart
+#    service: name=ntp state=restarted
+#####
+#ITEMS#######
+#  - name: testttttt
+#    service: name={{ item }} state=restarted
+#    with_items:
+#      - ntp
+#      - cron
+###
+##########################################
+#######change dns server##################
+#  - name: test-dns
+#    shell: resolvectl dns ens160 185.51.200.2
+#  - name: show changes
+#    command: resolvectl dns
+#    register: saag
+#  - debug: msg="{{ saag.stdout }}"
+#########################################
+
+########
+# ijad tagirr dar khotoote iek file
+#    lineinfile:
+#      line: "nameserver 185.51.200.2"
+#      dest: /etc/resolv.conf
+########

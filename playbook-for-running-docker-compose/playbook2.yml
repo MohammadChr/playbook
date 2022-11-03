@@ -1,0 +1,4 @@
+- hosts: me
+  tasks:
+    - name: starting a docker compose file
+      command: docker-compose -f docker-compose-test.yml down

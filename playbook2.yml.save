@@ -1,0 +1,6 @@
+- hosts: me
+  tasks:
+   - command: ping 8.8.8.8 -c 2
+     register: ping
+     msg_stdout: ping
+#   - debug: msg={{ ping.stdout }}

@@ -1,0 +1,54 @@
+- hosts: test
+  tasks:
+  - name: install pstgres
+    apt:
+    - name: postgres
+    - state: present
+  - name: create postgress db
+    postgres_databasee: db=mamade khafan state=present
+  - name: sakhte user ina
+    postgres_user:
+      name: mohammad
+      password: 1234
+      priv: *.*:ALL
+      host: localhost
+      state: present
+
+####taghire ijad kardan dar iek khate khas###
+#  - name: user line in file and regexp
+#    lineinfile:
+#      dest: /home/chr/1.txt
+#      regexp: "^port: 22$"
+#      line: "port: 2222"
+#############
+####handler and notify####
+#  - name: test notify
+#    service: name=ntp state=started enabled=yes
+#    notify: ntp restart
+#  handlers: 
+#  - name: ntp restart
+#    service: name=ntp state=restarted
+#####
+#ITEMS#######
+#  - name: testttttt
+#    service: name={{ item }} state=restarted
+#    with_items:
+#      - ntp
+#      - cron
+###
+##########################################
+#######change dns server##################
+#  - name: test-dns
+#    shell: resolvectl dns ens160 185.51.200.2
+#  - name: show changes
+#    command: resolvectl dns
+#    register: saag
+#  - debug: msg="{{ saag.stdout }}"
+#########################################
+
+########
+# ijad tagirr dar khotoote iek file
+#    lineinfile:
+#      line: "nameserver 185.51.200.2"
+#      dest: /etc/resolv.conf
+########
